@@ -1,0 +1,131 @@
+<html ng-app="formvalid">
+<head>
+	<title>Data Binding</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+	<nav class = "navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Experimenting With Controllers+</a>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container main-content" ng-controller="FormValidate">
+		<form ng-submit="onSubmit(formval.$valid)" 
+			  name="formval"
+			  novalidate="novalidate">
+
+			<div class="form-group" ng-class="
+				{
+				'has-error':!formval.name.$valid && (!formval.name.$pristine || formval.$submitted),
+				'has-success':formval.name.$valid && (!formval.name.$pristine || formval.$submitted)
+				}
+			">
+				<label for="name" class="control-label">Name</label>
+				<input type="name" 
+					   class="form-control" 
+					   id="name" 
+					   ng-model="model.name"
+					   required="required"
+					   name="name">
+				<p class="help-block" ng-show="formval.name.$error.required && (!formval.name.$pristine || formval.$submitted)">
+					This field is required.</p>					   
+
+				<p class="help-block" ng-show="formval.name.$error.name && (!formval.name.$pristine || formval.$submitted)">
+					Please enter a name.</p>		   
+			</div>
+			
+			<div class="form-group" ng-class="
+				{
+				'has-error':!formval.email.$valid && (!formval.name.$pristine || formval.$submitted),
+				'has-success':formval.email.$valid && (!formval.name.$pristine || formval.$submitted)
+				}
+			">
+				<label for="email" class="control-label">Email</label >
+				<input type="email"
+				       class="form-control"
+				       ng-model="model.email"
+				       id="email"
+					   required="required"
+					   name="email">
+				<p class="help-block" ng-show="formval.email.$error.required && (!formval.email.$pristine || formval.$submitted)">
+					This field is required.</p>					   
+
+				<p class="help-block" ng-show="formval.email.$error.email && (!formval.email.$pristine || formval.$submitted)">
+					Please enter a valid email.</p>	
+				<!-- <pre>Field Valid? {{formval.email.$valid}}</pre> -->
+			</div>					   
+			
+			<div class="form-group" ng-class="
+				{
+				'has-error':!formval.username.$valid && (!formval.username.$pristine || formval.$submitted),
+				'has-success':formval.username.$valid && (!formval.username.$pristine || formval.$submitted)
+				}
+			">
+				<label for="username" class="control-label">Username</label>
+				<input type="username" 
+					   class="form-control" 
+					   id="username" 
+					   ng-model="model.username"
+					   required="required"
+					   name="username">
+				<p class="help-block" ng-show="formval.username.$error.required && (!formval.username.$pristine || formval.$submitted)">
+					This field is required.</p>					   
+
+				<p class="help-block" ng-show="formval.username.$error.username && (!formval.username.$pristine || formval.$submitted)">
+					Please enter a username.</p>		   
+			</div>
+
+			<div class="form-group">
+				<label for="age">Age</label>
+				<input type="age" 
+					   class="form-control" 
+					   id="age" 
+					   ng-model="model.age">
+			</div>
+
+			<select name="sex" 
+					id="sex" 
+					class="form-control" 
+					ng-model="model.sex">
+				<option value="" >Please Choose</option>
+				<option value="male" >Male</option>
+				<option value="female" >Female</option>
+			</select>
+
+			<div class="form-group" ng-class="
+				{
+				'has-error':!formval.password.$valid && (!formval.password.$pristine || formval.$submitted),
+				'has-success':formval.password.$valid && (!formval.password.$pristine || formval.$submitted)
+				}
+			">
+				<label for="password" class="control-label">Password</label>
+				<input type="password" 
+					   class="form-control" 
+					   id="password" 
+					   ng-model="model.password"
+					   required="required"
+					   name="password">
+				<p class="help-block" ng-show="formval.password.$error.required && (!formval.password.$pristine || formval.$submitted)">
+					This field is required.</p>					   
+
+				<p class="help-block" ng-show="formval.password.$error.password && (!formval.password.$pristine || formval.$submitted)">
+					Please enter a password.</p>		   
+			</div>
+
+			<div class="form-group">
+				<button class="btn btn-primary" type"submit">Register</button>
+			</div>
+		</form>
+		<!-- <pre>{{formval | json}}</pre> -->
+	</div>
+
+
+<script src="js/angular.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

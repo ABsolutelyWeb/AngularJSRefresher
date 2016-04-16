@@ -1,0 +1,1 @@
+The purpose of this repository is to refresh my knowledge on AngularJS. Inside each folder, you will find a specific README.md file pertaining to the contents within that folder which will explain its purpose.
